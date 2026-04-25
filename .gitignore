@@ -1,0 +1,29 @@
+.claude/
+CLAUDE.md
+prd.md
+README1.md
+
+# Terraform state and lock files
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Local tfvars with real values (step2.tfvars is a personal copy)
+bidnewsub/step2/step2.tfvars
+
+bidexisting/bidexisting.tfvars
+
+
+# Terraform provider caches
+bidnewsub/step2/.terraform/
+bidnewsub/step1/.terraform/
+
+bidnewsub/step1/step1.tfvars
+
+bidnewsub/step2/terraform.tfvars
+
+*.*/terraform.tfvars
+
+bidexisting/.terraform/
+
+prdexisting.md
