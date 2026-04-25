@@ -72,13 +72,13 @@ To deploy the resources you must:
 4. You can check what Terraform plans to apply based on your configuration:
 
    ```bash
-   terraform plan -var-file="step1.tfvars"
+   terraform plan -var-file="step1_sample.tfvars"
    ```
 
 5. Apply your configuration to provision the resources:
 
    ```bash
-   terraform apply -var-file="step1.tfvars"
+   terraform apply -var-file="step1_sample.tfvars"
    ```
 
 6. Verify e.g., in BTP cockpit that a new subaccount with a SAP HANA Cloud and SAP Build Work Zone subscriptions have been created.
@@ -129,5 +129,5 @@ To remove all provisioned resources, destroy step2 first, then step1:
 terraform destroy -var-file="terraform.tfvars"
 
 # In step1/
-terraform destroy -var-file="step1.tfvars"
+terraform destroy -var-file="step1_sample.tfvars"
 ```
