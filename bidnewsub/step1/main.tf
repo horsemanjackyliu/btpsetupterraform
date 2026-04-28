@@ -287,6 +287,226 @@ resource "btp_subaccount_role_collection_assignment" "ailaunchpad_genai_manager"
   depends_on           = [btp_subaccount_subscription.ai_launchpad]
 }
 
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_mloperations_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_mloperations_editor"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_mloperations_editor_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_mloperations_editor"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_allow_all_resourcegroups" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_allow_all_resourcegroups"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_allow_all_resourcegroups_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_allow_all_resourcegroups"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_editor"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_editor_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_editor"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_editor_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_editor_without_genai"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_editor_without_genai_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_editor_without_genai"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_viewer" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_viewer"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_viewer_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_viewer"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_viewer_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_viewer_without_genai"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_viewer_without_genai_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_viewer_without_genai"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_connections_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_connections_editor"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_connections_editor_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_connections_editor"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_connections_editor_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_connections_editor_without_genai"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_connections_editor_without_genai_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_connections_editor_without_genai"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor_v2_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor_v2_without_genai"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor_v2_without_genai_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor_v2_without_genai"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor_without_genai"
+  user_name            = each.value
+  origin               = "sap.default"
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor_without_genai_custom_idp" {
+  for_each = var.custom_idp != "" ? toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : []) : toset([])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor_without_genai"
+  user_name            = each.value
+  origin               = local.custom_idp_origin
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
 
 
 

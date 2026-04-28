@@ -28,6 +28,7 @@ cf_space_developers = ["<your-email@example.com>"]
 
 launchpad_admins  = ["<your-email@example.com>"]
 hana_cloud_admins = ["<your-email@example.com>"]
+ai_launchpad_admins = ["<your-email@example.com>"]
 
 # Auto-generate step2/terraform.tfvars after apply
 create_tfvars_file_for_step2 = true

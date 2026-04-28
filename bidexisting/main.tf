@@ -232,6 +232,76 @@ resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_v
   depends_on           = [btp_subaccount_subscription.ai_launchpad]
 }
 
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_editor"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_editor_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_editor_without_genai"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_aicore_admin_viewer_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_aicore_admin_viewer_without_genai"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_connections_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_connections_editor"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_connections_editor_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_connections_editor_without_genai"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
+resource "btp_subaccount_role_collection_assignment" "ailaunchpad_functions_explorer_editor_v2_without_genai" {
+  for_each = toset(var.enable_app_subscription_setup__ai_launchpad ? var.ai_launchpad_admins : [])
+
+  subaccount_id        = data.btp_subaccount.this.id
+  role_collection_name = "ailaunchpad_functions_explorer_editor_v2_without_genai"
+  user_name            = each.value
+  origin               = local.origin_key
+  depends_on           = [btp_subaccount_subscription.ai_launchpad]
+}
+
 resource "btp_subaccount_entitlement" "hana_cloud_subscription" {
   count = var.enable_service_setup__hana_cloud ? 1 : 0
 
