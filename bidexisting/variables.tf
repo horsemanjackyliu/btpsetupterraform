@@ -164,7 +164,7 @@ variable "enable_service_setup__objectstore" {
 variable "service_plan__objectstore" {
   description = "The plan for SAP Object Store."
   type        = string
-  default     = "s3-standard"
+  default     = "standard"
 }
 
 variable "objectstore_instance_name" {

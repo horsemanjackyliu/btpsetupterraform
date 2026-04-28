@@ -76,13 +76,21 @@ resource "btp_subaccount_environment_instance" "cloudfoundry" {
 # Entitlements — Services
 # ------------------------------------------------------------------------------------------------------
 locals {
-  service_name__ai_core         = "aicore"
-  service_name__hana_cloud      = "hana-cloud"
-  service_name__hana            = "hana"
-  service_name__objectstore     = "objectstore"
-  service_name__xsuaa           = "xsuaa"
-  service_name__destination     = "destination"
-  service_name__html5_apps_repo = "html5-apps-repo"
+  service_name__ai_core              = "aicore"
+  service_name__hana_cloud           = "hana-cloud"
+  service_name__hana                 = "hana"
+  service_name__objectstore          = "objectstore"
+  service_name__xsuaa                = "xsuaa"
+  service_name__destination          = "destination"
+  service_name__html5_apps_repo      = "html5-apps-repo"
+  service_name__application_runtime  = "APPLICATION_RUNTIME"
+}
+
+resource "btp_subaccount_entitlement" "application_runtime" {
+  subaccount_id = data.btp_subaccount.this.id
+  service_name  = local.service_name__application_runtime
+  plan_name     = "MEMORY"
+  amount        = 4
 }
 
 resource "btp_subaccount_entitlement" "ai_core" {
